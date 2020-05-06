@@ -117,7 +117,7 @@ public class SampleService extends BaseProjectRestService<Sample> {
             final Protein protein = c.getAliquot();
             Protein toBeSaved;
             if (protein.getId() != null) {
-                toBeSaved = proteinRepository.findOne(protein.getId());
+                toBeSaved = proteinRepository.findById(protein.getId()).get();
             } else if (protein.getSlug() != null) {
                 toBeSaved = proteinRepository.findOneBySlug(protein.getSlug());
             } else {
@@ -136,7 +136,7 @@ public class SampleService extends BaseProjectRestService<Sample> {
             final Ligand ligand = c.getAliquot();
             Ligand toBeSaved;
             if (ligand.getId() != null) {
-                toBeSaved = ligandRepository.findOne(ligand.getId());
+                toBeSaved = ligandRepository.findById(ligand.getId()).get();
             } else if (ligand.getSlug() != null) {
                 toBeSaved = ligandRepository.findOneBySlug(ligand.getSlug());
             } else {
@@ -180,16 +180,16 @@ public class SampleService extends BaseProjectRestService<Sample> {
 
         List<Ligand> currentAndPreviousLigands = Stream.concat(extractLigands(result)
                 .stream(), sampleLigands.stream()).distinct().collect(Collectors.toList());
-        ligandRepository.save(currentAndPreviousLigands);
+        ligandRepository.saveAll(currentAndPreviousLigands);
         List<Protein> currentAndPreviousProteins = Stream.concat(extractProteins(result)
                 .stream(), sampleProteins.stream()).distinct().collect(Collectors.toList());
-        proteinRepository.save(currentAndPreviousProteins);
+        proteinRepository.saveAll(currentAndPreviousProteins);
 
         return result;
     }
 
     public void updateAvailableForGridMaking(@NonNull final Long sampleId, @NonNull final Boolean availabilityForGridMaking) {
-        final Sample sample = repository.findOne(sampleId);
+        final Sample sample = repository.findById(sampleId).get();
         if (sample == null) {
             LOGGER.info("[updateAvailableForGridMaking] Sample not found for ID: " + sampleId);
             throw new ResourceNotFoundException("Sample not found for ID: " + sampleId);

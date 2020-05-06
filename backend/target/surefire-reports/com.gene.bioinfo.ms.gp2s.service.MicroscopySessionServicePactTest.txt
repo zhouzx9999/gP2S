@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.gene.bioinfo.ms.gp2s.service.MicroscopySessionServicePactTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.065 s - in com.gene.bioinfo.ms.gp2s.service.MicroscopySessionServicePactTest

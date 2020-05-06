@@ -17,10 +17,7 @@
 package com.gene.bioinfo.ms.gp2s.infrastructure.security.user;
 
 import com.gene.bioinfo.ms.gp2s.infrastructure.security.LdapAuthProperties;
-import com.netflix.discovery.converters.Auto;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
@@ -66,10 +63,10 @@ public class SpringSecurityUserProvider implements UserProvider, AuditorAware<St
     }
 
     @Override
-    public String getCurrentAuditor() {
+    public Optional<String> getCurrentAuditor() {
         if (getSecurityEnabled()) {
-            return getCurrentUser();
+            return Optional.ofNullable(getCurrentUser());
         }
-        return DefaultUser.DEFAULT_USER_NAME;
+        return Optional.of(DefaultUser.DEFAULT_USER_NAME);
     }
 }

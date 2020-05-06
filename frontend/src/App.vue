@@ -143,7 +143,7 @@
 </script>
 
 <style lang="scss">
-  @import '~element-ui/lib/theme-default/index.css';
+  @import '~element-ui/lib/theme-chalk/index.css';
   @import 'styles/globals/base';
   @import 'styles/globals/transitions.css';
   @import 'styles/globals/overrides.element';

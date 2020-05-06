@@ -128,7 +128,7 @@ public class ProcessingSessionRestControllerITCase extends BaseRestITCase<Proces
         final Ligand ligand2 = ligandRepository.save(Ligand.builder().label(LIGAND_LABEL_2).slug(LIGAND_SLUG_2)
                 .projects(Collections.singletonList(p2)).build());
 
-        projects = projectRepository.save(Arrays.asList(p1, p2));
+        projects = projectRepository.saveAll(Arrays.asList(p1, p2));
 
         final List<ProteinComponent> proteinComponents = new ArrayList<>();
         proteinComponents.add(ProteinComponent.builder()

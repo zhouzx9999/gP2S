@@ -114,7 +114,7 @@ public class ValidationUtils {
     public static <P extends Persistable<Long>, R extends JpaRepository<P, Long>> void isDefined(P entity, R repository, String property, String messagePrefix, Errors error) {
         if (entity == null
                 || entity.getId() == null
-                || !repository.exists(entity.getId())) {
+                || !repository.existsById(entity.getId())) {
             error.rejectValue(property, messagePrefix + " can not be found");
         }
     }
@@ -131,7 +131,7 @@ public class ValidationUtils {
 
     public static void entityExists(Long id, CrudRepository repository, String property, String messagePrefix, Errors
             error) {
-        if (!repository.exists(id)) {
+        if (!repository.existsById(id)) {
             error.rejectValue(property, messagePrefix + " doesn't exist");
         }
     }

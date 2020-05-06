@@ -109,8 +109,7 @@ public class SampleRestControllerITCase extends BaseRestITCase<Sample> {
     @Test
     public void shouldUpdateAvailableForGridMaking() throws Exception {
         //given
-        final Sample sample = sampleRepository.findOne(entities.get(1)
-                .getId());
+        final Sample sample = sampleRepository.findById(entities.get(1).getId()).get();
         sample.setAvailableForGridMaking(true);
         sampleRepository.save(sample);
 
@@ -213,7 +212,7 @@ public class SampleRestControllerITCase extends BaseRestITCase<Sample> {
 
     @Test
     public void deleteProteinComponent() throws Exception {
-        final Sample sample = sampleRepository.findOne(entities.get(1).getId());
+        final Sample sample = sampleRepository.findById(entities.get(1).getId()).get();
         final ProteinComponent component = ProteinComponent.builder()
                                                            .id(entities.get(1)
                         .getProteinComponent()
@@ -240,7 +239,7 @@ public class SampleRestControllerITCase extends BaseRestITCase<Sample> {
 
     @Test
     public void updateProteinComponent() throws Exception {
-        final Sample sample = sampleRepository.findOne(entities.get(1).getId());
+        final Sample sample = sampleRepository.findById(entities.get(1).getId()).get();
         final ProteinComponent component = ProteinComponent.builder()
                 .id(entities.get(1)
                         .getProteinComponent()
@@ -347,7 +346,7 @@ public class SampleRestControllerITCase extends BaseRestITCase<Sample> {
 
     @Test
     public void deleteLigandComponents() throws Exception {
-        final Sample sample = sampleRepository.findOne(entities.get(1).getId());
+        final Sample sample = sampleRepository.findById(entities.get(1).getId()).get();
         sample.setLigandComponent(Collections.emptyList());
         //Satisfying at least one protein component requirement
         sample.setProteinComponent(entities.get(1).getProteinComponent());
@@ -362,7 +361,7 @@ public class SampleRestControllerITCase extends BaseRestITCase<Sample> {
 
     @Test
     public void updateLigandComponents() throws Exception {
-        final Sample sample = sampleRepository.findOne(entities.get(1).getId());
+        final Sample sample = sampleRepository.findById(entities.get(1).getId()).get();
         LigandComponent component = LigandComponent.builder()
                 .id(entities.get(1).getLigandComponent().get(0).getId())
                 .finalConcentration(7.1f)
@@ -388,7 +387,7 @@ public class SampleRestControllerITCase extends BaseRestITCase<Sample> {
 
     @Test
     public void updateBothProteinAndLigandComponent() throws Exception {
-        final Sample sample = sampleRepository.findOne(entities.get(1).getId());
+        final Sample sample = sampleRepository.findById(entities.get(1).getId()).get();
         final ProteinComponent proteinComponent = ProteinComponent.builder()
                 .id(entities.get(1)
                         .getProteinComponent()

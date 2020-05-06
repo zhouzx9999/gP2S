@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.096 s <<< FAILURE! - in com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest
+shouldNotAllowEmptyChildMapId(com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest.shouldNotAllowEmptyChildMapId(MapLinkListValidatorTest.java:123)
+
+shouldNotAllowLinkMapToItself(com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest.shouldNotAllowLinkMapToItself(MapLinkListValidatorTest.java:152)
+
+shouldNotAllowEmptyChildMap(com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest.shouldNotAllowEmptyChildMap(MapLinkListValidatorTest.java:109)
+
+shouldAcceptMapLink(com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.MapLinkListValidatorTest.shouldAcceptMapLink(MapLinkListValidatorTest.java:199)
+

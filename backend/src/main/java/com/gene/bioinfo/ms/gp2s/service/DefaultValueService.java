@@ -56,7 +56,7 @@ public class DefaultValueService {
     }
 
     public Map<String, Object> getValues(DefaultValue.DefaultValueType type, Long projectId) {
-        if (!projectRepository.exists(projectId)) {
+        if (!projectRepository.existsById(projectId)) {
             throw new ValidationException(String.format("Project with following id: '%s' doesn't exist", projectId));
         }
         List<DefaultValue> defaultValues = new ArrayList<>();

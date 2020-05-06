@@ -67,13 +67,13 @@ public class VitrificationProtocolValidator extends LabelValidator {
 
     	if(protocol.getBlottingPaper() == null
     			|| protocol.getBlottingPaper().getId() == null
-    			|| !blottingPaperRepository.exists(protocol.getBlottingPaper().getId())) {
+    			|| !blottingPaperRepository.existsById(protocol.getBlottingPaper().getId())) {
     		e.rejectValue("blottingPaper", "Blotting paper can not be found");
     	}
 
 		if(protocol.getVitrificationMachine() == null
 				|| protocol.getVitrificationMachine().getId() == null
-				|| !vitrificationMachineRepository.exists(protocol.getVitrificationMachine().getId())) {
+				|| !vitrificationMachineRepository.existsById(protocol.getVitrificationMachine().getId())) {
 			e.rejectValue("VitrificationMachine", "Vitrification machine can not be found");
 		}
     }

@@ -84,7 +84,7 @@ public class SampleValidatorTest {
 	public void shouldNotAllowEmptyFinalConcentrationOfComponent() {
 		Sample sample = Sample.builder().label("label").build();
 		Protein aliquot = Protein.builder().id(1L).build();
-		when(proteinRepository.findOne(1L)).thenReturn(aliquot);
+		when(proteinRepository.findById(1L).get()).thenReturn(aliquot);
 		sample.setProteinComponent(Collections.singletonList(ProteinComponent.builder()
                                                                              .aliquot(aliquot)
                                                                              .build()));
@@ -96,7 +96,7 @@ public class SampleValidatorTest {
 	public void shouldNotAllow0AsFinalConcentrationOfComponent() {
 		Sample sample = Sample.builder().label("label").build();
 		Protein aliquot = Protein.builder().id(1L).build();
-		when(proteinRepository.findOne(1L)).thenReturn(aliquot);
+		when(proteinRepository.findById(1L).get()).thenReturn(aliquot);
 		sample.setProteinComponent(Collections.singletonList(ProteinComponent.builder()
                                                                              .finalConcentration(0f)
                                                                              .aliquot(aliquot)
@@ -145,7 +145,7 @@ public class SampleValidatorTest {
     public void shouldNotReturnAnyError() {
         Sample sample = Sample.builder().label("label").incubationTime(1f).incubationTemperature(-100f).availableForGridMaking(true).build();
         Protein aliquot = Protein.builder().id(1L).build();
-        when(proteinRepository.findOne(1L)).thenReturn(aliquot);
+        when(proteinRepository.findById(1L).get()).thenReturn(aliquot);
         sample.setProteinComponent(Collections.singletonList(ProteinComponent.builder()
                 .aliquot(aliquot)
                 .finalConcentration(1f)

@@ -45,6 +45,6 @@ public class MapAttachmentService extends SingleAttachmentService implements ISi
             map.setAttachmentFileName(null);
             map.setAttachmentMongoId(null);
         });
-        mapRepository.save(maps);
+        mapRepository.saveAll(maps);
     }
 }

@@ -198,7 +198,7 @@ public abstract class BaseRestITCase<T extends BaseSlugAndLabelEntity> extends B
         final T entityToModify = entities.get(0);
         final String updatedLabel = "Updated label";
         entityToModify.setLabel(updatedLabel);
-        entityToModify.setVersion(entityRepository.findOne(entityToModify.getId()).getVersion());
+        entityToModify.setVersion(entityRepository.findById(entityToModify.getId()).get().getVersion());
 
         getMockMvc().perform(put(URI).contentType(JSON_CONTENT_TYPE).content(json(entityToModify)))
                 .andExpect(status().isOk())

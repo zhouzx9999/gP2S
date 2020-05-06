@@ -46,6 +46,6 @@ public class ModelAttachmentService extends SingleAttachmentService implements I
             model.setAttachmentFileName(null);
             model.setAttachmentMongoId(null);
         });
-        modelRepository.save(models);
+        modelRepository.saveAll(models);
     }
 }

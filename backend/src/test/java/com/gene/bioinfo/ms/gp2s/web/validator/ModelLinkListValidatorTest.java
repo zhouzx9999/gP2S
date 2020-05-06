@@ -101,8 +101,8 @@ public class ModelLinkListValidatorTest {
     public void shouldNotAllowEmptyChildModel() {
         //given
         Model model = Model.builder().id(1L).build();
-        when(this.modelRepository.exists(1L)).thenReturn(true);
-        when(this.modelRepository.findOne(1L)).thenReturn(model);
+        when(this.modelRepository.existsById(1L)).thenReturn(true);
+        when(this.modelRepository.findById(1L).get()).thenReturn(model);
         ModelLink link = ModelLink.builder().parentModel(model).build();
         //when
         tested.validate(Collections.singletonList(link), errors);
@@ -115,8 +115,8 @@ public class ModelLinkListValidatorTest {
         //given
         Long parentId = 1L;
         Model parent = Model.builder().id(parentId).build();
-        when(this.modelRepository.exists(parentId)).thenReturn(true);
-        when(this.modelRepository.findOne(parentId)).thenReturn(parent);
+        when(this.modelRepository.existsById(parentId)).thenReturn(true);
+        when(this.modelRepository.findById(parentId).get()).thenReturn(parent);
         Model model = Model.builder().build();
         ModelLink link = ModelLink.builder()
                 .parentModel(parent)
@@ -144,8 +144,8 @@ public class ModelLinkListValidatorTest {
     public void shouldNotAllowLinkModelToItself() {
         //given
         Model model = Model.builder().id(1L).build();
-        when(this.modelRepository.exists(1L)).thenReturn(true);
-        when(this.modelRepository.findOne(1L)).thenReturn(model);
+        when(this.modelRepository.existsById(1L)).thenReturn(true);
+        when(this.modelRepository.findById(1L).get()).thenReturn(model);
         ModelLink link = ModelLink.builder().parentModel(model).childModel(model).build();
         //when
         tested.validate(Collections.singletonList(link), errors);
@@ -191,10 +191,10 @@ public class ModelLinkListValidatorTest {
         Long childId = 2L;
         Model parent = Model.builder().id(parentId).build();
         Model child = Model.builder().id(childId).build();
-        when(this.modelRepository.exists(parentId)).thenReturn(true);
-        when(this.modelRepository.findOne(parentId)).thenReturn(parent);
-        when(this.modelRepository.exists(childId)).thenReturn(true);
-        when(this.modelRepository.findOne(childId)).thenReturn(child);
+        when(this.modelRepository.existsById(parentId)).thenReturn(true);
+        when(this.modelRepository.findById(parentId).get()).thenReturn(parent);
+        when(this.modelRepository.existsById(childId)).thenReturn(true);
+        when(this.modelRepository.findById(childId).get()).thenReturn(child);
         ModelLink link = ModelLink.builder()
                 .parentModel(parent)
                 .childModel(child)

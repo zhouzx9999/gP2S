@@ -56,7 +56,7 @@ public class SampleServiceTest {
 	public void shouldThrowErrorWhenSampleIsNotAvailable() {
 		//given
 		final Long INVALID_SAMPLE_ID = -10L;
-		given(sampleRepository.findOne(INVALID_SAMPLE_ID)).willReturn(null);
+		given(sampleRepository.findById(INVALID_SAMPLE_ID)).willReturn(null);
 
 		//when
 		try {
@@ -76,7 +76,7 @@ public class SampleServiceTest {
 									.id(SAMPLE_ID)
 									.availableForGridMaking(true)
 									.build();
-		given(sampleRepository.findOne(sample.getId())).willReturn(sample);
+		given(sampleRepository.findById(sample.getId()).get()).willReturn(sample);
 
 		//when
 		tested.updateAvailableForGridMaking(sample.getId(), false);
@@ -99,7 +99,7 @@ public class SampleServiceTest {
 				.id(SAMPLE_ID)
 				.availableForGridMaking(false)
 				.build();
-		given(sampleRepository.findOne(sample.getId())).willReturn(sample);
+		given(sampleRepository.findById(sample.getId()).get()).willReturn(sample);
 
 		//when
 		tested.updateAvailableForGridMaking(sample.getId(), true);
@@ -122,7 +122,7 @@ public class SampleServiceTest {
 				.id(SAMPLE_ID)
 				.availableForGridMaking(true)
 				.build();
-		given(sampleRepository.findOne(sample.getId())).willReturn(sample);
+		given(sampleRepository.findById(sample.getId()).get()).willReturn(sample);
 
 		//when
 		tested.updateAvailableForGridMaking(sample.getId(), true);

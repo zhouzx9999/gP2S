@@ -41,7 +41,7 @@ public class ModelLinkService {
     }
 
     public List<ModelLink> getModelLinks(@NonNull final Long modelId) {
-        if (!this.modelRepository.exists(modelId)) {
+        if (!this.modelRepository.existsById(modelId)) {
             throw new ResourceNotFoundException("Model with given id doesn't exist: " + modelId);
         }
 
@@ -49,15 +49,15 @@ public class ModelLinkService {
     }
 
     public void deleteModelLink(@NonNull final Long modelLinkId) {
-        Optional.ofNullable(this.modelLinkRepository.findOne(modelLinkId))
+        Optional.ofNullable(this.modelLinkRepository.findById(modelLinkId))
                 .orElseThrow(() -> new ResourceNotFoundException("ModelLink not found for id: " + modelLinkId));
-        this.modelLinkRepository.delete(modelLinkId);
+        this.modelLinkRepository.deleteById(modelLinkId);
     }
 
     public ModelLink createModelLink(@NonNull final ModelLink input) {
         final ModelLink link = ModelLink.builder()
-                .parentModel(this.modelRepository.findOne(input.getParentModel().getId()))
-                .childModel(this.modelRepository.findOne(input.getChildModel().getId()))
+                .parentModel(this.modelRepository.findById(input.getParentModel().getId()).get())
+                .childModel(this.modelRepository.findById(input.getChildModel().getId()).get())
                 .comment(input.getComment())
                 .relationshipType(input.getRelationshipType())
                 .build();

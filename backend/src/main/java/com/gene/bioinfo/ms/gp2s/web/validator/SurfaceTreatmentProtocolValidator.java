@@ -52,7 +52,7 @@ public class SurfaceTreatmentProtocolValidator extends LabelValidator {
     	}
     	if(protocol.getMachine() == null
     			|| protocol.getMachine().getId() == null
-    			|| !surfaceTreatmentMachineRepository.exists(protocol.getMachine().getId())) {
+    			|| !surfaceTreatmentMachineRepository.existsById(protocol.getMachine().getId())) {
     		e.rejectValue("machine", "Surface Treatment Machine can not be found");
     	}
     }

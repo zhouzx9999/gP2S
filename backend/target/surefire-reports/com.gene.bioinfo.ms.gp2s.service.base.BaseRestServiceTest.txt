@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.gene.bioinfo.ms.gp2s.service.base.BaseRestServiceTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.076 s <<< FAILURE! - in com.gene.bioinfo.ms.gp2s.service.base.BaseRestServiceTest
+unnecessary Mockito stubbings(com.gene.bioinfo.ms.gp2s.service.base.BaseRestServiceTest)  Time elapsed: 0.02 s  <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected in test class: BaseRestServiceTest
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.gene.bioinfo.ms.gp2s.service.base.BaseRestServiceTest.forbidsCreatingEntityWithSlug(BaseRestServiceTest.java:75)
+  2. -> at com.gene.bioinfo.ms.gp2s.service.base.BaseRestServiceTest.forbidsCreatingEntityWithId(BaseRestServiceTest.java:68)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+

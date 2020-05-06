@@ -116,7 +116,7 @@ public class SampleValidator extends LabelValidator {
     protected <A extends BaseAliquot, R extends BaseSlugRepository<A>> A loadAliquotByExample(A example, R repository) {
         if (example != null) {
             if (example.getId() != null) {
-                return repository.findOne(example.getId());
+                return repository.findById(example.getId()).get();
             } else {
                 return repository.findOneBySlug(example.getSlug());
             }

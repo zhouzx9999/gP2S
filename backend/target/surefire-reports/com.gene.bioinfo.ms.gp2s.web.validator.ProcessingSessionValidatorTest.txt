@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.gene.bioinfo.ms.gp2s.web.validator.ProcessingSessionValidatorTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.027 s <<< FAILURE! - in com.gene.bioinfo.ms.gp2s.web.validator.ProcessingSessionValidatorTest
+shouldAcceptProcessingSessionWithUsedImageProcessingSoftware(com.gene.bioinfo.ms.gp2s.web.validator.ProcessingSessionValidatorTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.ProcessingSessionValidatorTest.shouldAcceptProcessingSessionWithUsedImageProcessingSoftware(ProcessingSessionValidatorTest.java:174)
+
+shouldRequireSoftwareVersionOfUsedImageProcessingSoftwareToBeDefined(com.gene.bioinfo.ms.gp2s.web.validator.ProcessingSessionValidatorTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.ProcessingSessionValidatorTest.shouldRequireSoftwareVersionOfUsedImageProcessingSoftwareToBeDefined(ProcessingSessionValidatorTest.java:141)
+
+shouldRequireImageProcessingSoftwareOfUsedImageProcessingSoftwareToExistInDatabase(com.gene.bioinfo.ms.gp2s.web.validator.ProcessingSessionValidatorTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.ProcessingSessionValidatorTest.shouldRequireImageProcessingSoftwareOfUsedImageProcessingSoftwareToExistInDatabase(ProcessingSessionValidatorTest.java:114)
+

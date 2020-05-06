@@ -62,7 +62,7 @@ public class DefaultValueServiceTest {
         tested = new DefaultValueService(repository, projectRepository);
         project = Project.builder().id(1L).build();
         Mockito.when(projectRepository.existsBySlug(Mockito.anyString())).thenReturn(true);
-        Mockito.when(projectRepository.exists(Mockito.any(Long.class))).thenReturn(true);
+        Mockito.when(projectRepository.existsById(Mockito.any(Long.class))).thenReturn(true);
     }
 
     @Test(expected = NullPointerException.class)

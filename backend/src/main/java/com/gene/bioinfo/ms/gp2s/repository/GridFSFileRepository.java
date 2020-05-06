@@ -17,13 +17,21 @@
 package com.gene.bioinfo.ms.gp2s.repository;
 
 import com.gene.bioinfo.ms.gp2s.service.attachment.File;
+import com.mongodb.client.gridfs.GridFSBucket;
+import com.mongodb.client.gridfs.GridFSDownloadStream;
+import com.mongodb.client.gridfs.model.GridFSFile;
 import com.mongodb.gridfs.GridFSDBFile;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
+import org.springframework.data.mongodb.gridfs.GridFsResource;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
@@ -32,10 +40,12 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 public class GridFSFileRepository implements FileRepository {
 
     private static final String MONGODB_ID = "_id";
-    private final GridFsOperations gridFsOperations;
+    private final GridFsTemplate gridFsOperations;
+
+    private GridFSBucket gridFSBucket;
 
     @Autowired
-    public GridFSFileRepository(@NonNull final GridFsOperations gridFsOperations) {
+    public GridFSFileRepository(@NonNull final GridFsTemplate gridFsOperations) {
         this.gridFsOperations = gridFsOperations;
     }
 
@@ -43,23 +53,32 @@ public class GridFSFileRepository implements FileRepository {
     @NonNull
     public String store(@NonNull final File file) {
         return gridFsOperations.store(file.getContentStream(), file.getFileName(), file.getContentType(), file.getFileMetadata())
-                .getId()
+                .get()
                 .toString();
     }
 
     @Override
     public File findOne(@NonNull final String fileId) {
-        final GridFSDBFile fSDBFile = gridFsOperations.findOne(new Query().addCriteria(where(MONGODB_ID).is(fileId)));
+        final GridFSFile fSDBFile = gridFsOperations.findOne(new Query().addCriteria(where(MONGODB_ID).is(fileId)));
         if (fSDBFile == null) {
             return null;
+        }
+        GridFSDownloadStream in = gridFSBucket.openDownloadStream(fSDBFile.getObjectId());
+
+        GridFsResource resource = new GridFsResource(fSDBFile,in);
+        InputStream inputStream = null;
+        try {
+            inputStream = resource.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return File.builder()
                 .fileName(fSDBFile.getFilename())
                 .contentType
                         (fSDBFile.getContentType())
                 .length(fSDBFile.getLength())
-                .contentStream(fSDBFile.getInputStream())
-                .fileMetadata(fSDBFile.get("metadata"))
+                .contentStream(inputStream)
+                .fileMetadata(fSDBFile.getMetadata())
                 .build();
     }
 

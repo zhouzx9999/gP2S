@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.gene.bioinfo.ms.gp2s.web.protein.ProteinRestControllerTest
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.417 s - in com.gene.bioinfo.ms.gp2s.web.protein.ProteinRestControllerTest

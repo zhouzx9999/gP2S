@@ -18,7 +18,7 @@ package com.gene.bioinfo.ms.gp2s.web.validator;
 
 import com.gene.bioinfo.ms.gp2s.domain.Microscope;
 import com.gene.bioinfo.ms.gp2s.infrastructure.constants.DomainConstants;
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 

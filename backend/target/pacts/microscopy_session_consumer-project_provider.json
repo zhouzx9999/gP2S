@@ -1,0 +1,78 @@
+{
+    "provider": {
+        "name": "project_provider"
+    },
+    "consumer": {
+        "name": "microscopy_session_consumer"
+    },
+    "interactions": [
+        {
+            "description": "a GET request with a non-existing session with given microscope ID or slug",
+            "request": {
+                "method": "GET",
+                "path": "/api/v1/microscopy-session/microscope/9999999999999"
+            },
+            "response": {
+                "status": 404
+            }
+        },
+        {
+            "description": "a GET request with a valid microscope ID",
+            "request": {
+                "method": "GET",
+                "path": "/api/v1/microscopy-session/microscope/3"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "ContentType": "application/json",
+                    "Content-Type": "application/json; charset=UTF-8"
+                },
+                "body": {
+                    "microscope.id": "3",
+                    "microscope.slug": "microscope-3",
+                    "id": "1",
+                    "dataStorageDirectoryName": "dir_name"
+                }
+            }
+        },
+        {
+            "description": "a GET request with a valid microscope slug",
+            "request": {
+                "method": "GET",
+                "path": "/api/v1/microscopy-session/microscope/microscope-3"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "ContentType": "application/json",
+                    "Content-Type": "application/json; charset=UTF-8"
+                },
+                "body": {
+                    "microscope.id": "3",
+                    "microscope.slug": "microscope-3",
+                    "id": "1",
+                    "dataStorageDirectoryName": "dir_name"
+                }
+            }
+        },
+        {
+            "description": "a GET request without ID or slug",
+            "request": {
+                "method": "GET",
+                "path": "/api/v1/microscopy-session/microscope/"
+            },
+            "response": {
+                "status": 400
+            }
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.16"
+        }
+    }
+}

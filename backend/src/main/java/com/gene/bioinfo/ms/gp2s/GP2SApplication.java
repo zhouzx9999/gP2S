@@ -41,7 +41,7 @@ public class GP2SApplication {
 
     private static void logAccessURLs(ConfigurableApplicationContext applicationContext) {
         ConfigurableEnvironment env = applicationContext.getEnvironment();
-        String contextPath = env.getProperty("server.contextPath", "");
+        String contextPath = env.getProperty("server.servlet.context-path", "");
         String port = env.getProperty("server.port", "");
         String hostAddress = "unknown";
         try {

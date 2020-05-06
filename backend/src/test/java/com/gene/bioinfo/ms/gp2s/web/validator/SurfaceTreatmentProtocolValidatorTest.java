@@ -135,7 +135,7 @@ public class SurfaceTreatmentProtocolValidatorTest {
 	
 	@Test
 	public void shouldAcceptMachineThatExistInDb() {
-		when(surfaceTreatmentMachineRepository.exists(1L)).thenReturn(true);
+		when(surfaceTreatmentMachineRepository.existsById(1L)).thenReturn(true);
 		tested.validate(SurfaceTreatmentProtocol.builder().machine(SurfaceTreatmentMachine.builder().id(1L).build()).build(), errors);
 		verify(errors, times(0)).rejectValue(eq("machine"), anyString());
 	}

@@ -45,9 +45,9 @@
         </el-col>
       </el-row>
 
-      <el-row :gutter="24">
+      <el-row :gutter="24">  hg
         <el-col>
-          <multiple-select :selectedEntities="entity.microscopySessions" entitiesName="microscopySessions"
+            <multiple-select :selectedEntities="entity.microscopySessions" entitiesName="microscopySessions"
                            :allEntities="allMicroscopySessions"
                            class="model-base-form__map-selector-container"
                            entity-label="Microscopy session"

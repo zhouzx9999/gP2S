@@ -76,7 +76,7 @@ public abstract class BaseRestService<T extends BaseSlugAndLabelEntity> implemen
 
     @NonNull
     public T getItem(@NonNull final Long id) {
-        return postLoadItem(Optional.ofNullable(this.repository.findOne(id))
+        return postLoadItem(Optional.ofNullable(this.repository.findById(id).get())
                 .orElseThrow(() -> new ResourceNotFoundException("Resource not found for id: " + id)));
     }
 
@@ -93,7 +93,7 @@ public abstract class BaseRestService<T extends BaseSlugAndLabelEntity> implemen
     @NonNull
     public T updateItem(@NonNull final T input) {
         commonUpdateItemValidations(input);
-        T itemToUpdate = this.repository.findOne(input.getId());
+        T itemToUpdate = this.repository.findById(input.getId()).get();
         if (itemToUpdate == null) {
             throw new ResourceNotFoundException(
                     "No item with that id in the DB: " + input.getId());
@@ -114,7 +114,7 @@ public abstract class BaseRestService<T extends BaseSlugAndLabelEntity> implemen
 
     public void deleteItem(Long id) {
         // FIXME: Cascade deleting.
-        this.repository.delete(id);
+        this.repository.deleteById(id);
     }
 
     @NonNull

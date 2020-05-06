@@ -74,7 +74,7 @@ public class AliquotService {
 
     private Optional<Project> loadProject(final String projectSlugOrId) {
         if (isNumeric(projectSlugOrId)) {
-            return ofNullable(projectRepository.findOne(parseLong(projectSlugOrId)));
+            return ofNullable(projectRepository.findById(parseLong(projectSlugOrId)).get());
         } else {
             return ofNullable(projectRepository.findOneBySlug(projectSlugOrId));
         }

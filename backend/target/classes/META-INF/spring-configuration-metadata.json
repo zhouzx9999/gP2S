@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "name": "gp2s.auth.ldap",
+      "type": "com.gene.bioinfo.ms.gp2s.infrastructure.security.LdapAuthProperties",
+      "sourceType": "com.gene.bioinfo.ms.gp2s.infrastructure.security.LdapAuthProperties"
+    },
+    {
+      "name": "swagger",
+      "type": "com.gene.bioinfo.ms.gp2s.infrastructure.config.SwaggerConfig",
+      "sourceType": "com.gene.bioinfo.ms.gp2s.infrastructure.config.SwaggerConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "gp2s.auth.ldap.manager-dn",
+      "type": "java.lang.String",
+      "sourceType": "com.gene.bioinfo.ms.gp2s.infrastructure.security.LdapAuthProperties"
+    },
+    {
+      "name": "gp2s.auth.ldap.manager-password",
+      "type": "java.lang.String",
+      "sourceType": "com.gene.bioinfo.ms.gp2s.infrastructure.security.LdapAuthProperties"
+    },
+    {
+      "name": "gp2s.auth.ldap.url",
+      "type": "java.lang.String",
+      "sourceType": "com.gene.bioinfo.ms.gp2s.infrastructure.security.LdapAuthProperties"
+    },
+    {
+      "name": "gp2s.auth.ldap.user-search-query",
+      "type": "java.lang.String",
+      "sourceType": "com.gene.bioinfo.ms.gp2s.infrastructure.security.LdapAuthProperties"
+    },
+    {
+      "name": "swagger.info",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "sourceType": "com.gene.bioinfo.ms.gp2s.infrastructure.config.SwaggerConfig"
+    }
+  ],
+  "hints": []
+}

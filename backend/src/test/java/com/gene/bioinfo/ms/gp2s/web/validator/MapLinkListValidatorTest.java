@@ -105,8 +105,8 @@ public class MapLinkListValidatorTest {
     public void shouldNotAllowEmptyChildMap() {
         //given
         Map map = Map.builder().id(1L).build();
-        when(this.mapRepository.exists(1L)).thenReturn(true);
-        when(this.mapRepository.findOne(1L)).thenReturn(map);
+        when(this.mapRepository.existsById(1L)).thenReturn(true);
+        when(this.mapRepository.findById(1L).get()).thenReturn(map);
         MapLink link = MapLink.builder().parentMap(map).build();
         //when
         tested.validate(Collections.singletonList(link), errors);
@@ -119,8 +119,8 @@ public class MapLinkListValidatorTest {
         //given
         Long parentId = 1L;
         Map parent = Map.builder().id(parentId).build();
-        when(this.mapRepository.exists(parentId)).thenReturn(true);
-        when(this.mapRepository.findOne(parentId)).thenReturn(parent);
+        when(this.mapRepository.existsById(parentId)).thenReturn(true);
+        when(this.mapRepository.findById(parentId).get()).thenReturn(parent);
         Map map = Map.builder().build();
         MapLink link = MapLink.builder()
                 .parentMap(parent)
@@ -148,8 +148,8 @@ public class MapLinkListValidatorTest {
     public void shouldNotAllowLinkMapToItself() {
         //given
         Map map = Map.builder().id(1L).build();
-        when(this.mapRepository.exists(1L)).thenReturn(true);
-        when(this.mapRepository.findOne(1L)).thenReturn(map);
+        when(this.mapRepository.existsById(1L)).thenReturn(true);
+        when(this.mapRepository.findById(1L).get()).thenReturn(map);
         MapLink link = MapLink.builder().parentMap(map).childMap(map).build();
         //when
         tested.validate(Collections.singletonList(link), errors);
@@ -195,10 +195,10 @@ public class MapLinkListValidatorTest {
         Long childId = 2L;
         Map parent = Map.builder().id(parentId).build();
         Map child = Map.builder().id(childId).build();
-        when(this.mapRepository.exists(parentId)).thenReturn(true);
-        when(this.mapRepository.findOne(parentId)).thenReturn(parent);
-        when(this.mapRepository.exists(childId)).thenReturn(true);
-        when(this.mapRepository.findOne(childId)).thenReturn(child);
+        when(this.mapRepository.existsById(parentId)).thenReturn(true);
+        when(this.mapRepository.findById(parentId).get()).thenReturn(parent);
+        when(this.mapRepository.existsById(childId)).thenReturn(true);
+        when(this.mapRepository.findById(childId).get()).thenReturn(child);
         MapLink link = MapLink.builder()
                 .parentMap(parent)
                 .childMap(child)

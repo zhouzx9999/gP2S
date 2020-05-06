@@ -88,7 +88,7 @@ public class ProcessingSessionValidator extends LabelValidator {
 
             if (imageProcessingSoftwareId != null) {
                 final ImageProcessingSoftware software
-                        = imageProcessingSoftwareRepository.findOne(imageProcessingSoftwareId);
+                        = imageProcessingSoftwareRepository.findById(imageProcessingSoftwareId).get();
                 if (software == null) {
                     errors.rejectValue("usedImageProcessingSoftware.imageProcessingSoftware", "Invalid image " +
                             "processing software");
@@ -103,8 +103,7 @@ public class ProcessingSessionValidator extends LabelValidator {
         final List versions = Optional.ofNullable(software.getSoftwareVersions())
                                       .orElse(Collections.emptyList());
         if (usedImageProcessingSoftware.getId() != null) { // update case
-            final UsedImageProcessingSoftware original = usedImageProcessingSoftwareRepository.findOne
-                    (usedImageProcessingSoftware.getId());
+            final UsedImageProcessingSoftware original = usedImageProcessingSoftwareRepository.findById(usedImageProcessingSoftware.getId()).get();
             if (original != null && original.getSoftwareVersion().equals(usedImageProcessingSoftware
                     .getSoftwareVersion())) {
                 //no need to validate version, so it allow historical values to pass

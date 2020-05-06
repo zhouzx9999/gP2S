@@ -53,17 +53,17 @@ public class LigandService extends BaseProjectRestService<Ligand> {
 
     @NonNull
     public Collection<Project> getItemProjects(@NonNull final Long id) {
-        return Optional.ofNullable(this.repository.findOne(id)).map(Ligand::getProjects)
+        return Optional.ofNullable(this.repository.findById(id).get()).map(Ligand::getProjects)
                 .orElse(Collections.emptyList());
     }
 
     @NonNull
     public Ligand createItem(@NonNull final Ligand input, @NonNull final Long projectId) {
-        if (!projectRepository.exists(projectId)) {
+        if (!projectRepository.existsById(projectId)) {
             throw new ResourceNotFoundException("Project with specified id doesn't exists: " + projectId);
         }
 
-        final Project project = projectRepository.findOne(projectId);
+        final Project project = projectRepository.findById(projectId).get();
         return commonCreateItem(input, project);
     }
 
@@ -91,7 +91,7 @@ public class LigandService extends BaseProjectRestService<Ligand> {
     }
 
     public Collection<Project> disconnectProject(@NonNull final Long ligandId, @NonNull final Long projectId) {
-        final Ligand ligand = Optional.ofNullable(repository.findOne(ligandId)).orElseThrow(() ->
+        final Ligand ligand = Optional.ofNullable(repository.findById(ligandId).get()).orElseThrow(() ->
                 new ResourceNotFoundException("Ligand not found"));
 
         final Project project = ligand.getProjects().stream().filter(p -> p.getId().equals(projectId)).findFirst()
@@ -105,10 +105,8 @@ public class LigandService extends BaseProjectRestService<Ligand> {
 
     public Collection<Project> connectProject(@NonNull final Long ligandId,
                                               @NonNull final Long projectId) {
-        final Ligand ligand = Optional.ofNullable(repository.findOne(ligandId)).orElseThrow
-                (ResourceNotFoundException::new);
-        final Project project = Optional.ofNullable(projectRepository.findOne(projectId)).orElseThrow
-                (ResourceNotFoundException::new);
+        final Ligand ligand = Optional.ofNullable(repository.findById(ligandId).get()).orElseThrow(ResourceNotFoundException::new);
+        final Project project = Optional.ofNullable(projectRepository.findById(projectId).get()).orElseThrow(ResourceNotFoundException::new);
         if (ligand.getProjects().contains(project)) {
             throw new ValidationException("Association already exists");
         }

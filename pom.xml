@@ -7,14 +7,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <version>2.1.13.RELEASE</version>
         <relativePath/>
     </parent>
 
     <groupId>com.gene.bioinfo.ms</groupId>
     <name>gp2s-app</name>
     <artifactId>gp2s-app</artifactId>
-    <version>1.1.43</version>
+    <version>2.1.43</version>
     <packaging>pom</packaging>
 
     <scm>
@@ -31,14 +31,60 @@
     <properties>
         <main.basedir>${project.basedir}</main.basedir>
     </properties>
+    <repositories>
+        <repository>
+            <id>aliyun-repos</id>
+            <url>https://maven.aliyun.com/repository/releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>Central-Repository</id>
+            <url>https://repo1.maven.org/maven2/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>aliyun-repos2</id>
+            <url>https://maven.aliyun.com/repository/central/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>aliyun-repos3</id>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyun-plugin</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>aliyun-plugin2</id>
+            <url>https://maven.aliyun.com/repository/spring-plugin/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.jfrog.buildinfo</groupId>
                 <artifactId>artifactory-maven-plugin</artifactId>
                 <inherited>false</inherited>
-                <version>2.4.0</version>
+                <version>2.2.1</version>
             </plugin>
             <plugin>
                 <groupId>ru.concerteza.buildnumber</groupId>

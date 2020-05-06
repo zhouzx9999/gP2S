@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.085 s <<< FAILURE! - in com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest
+shouldMakeSampleUnavailableForGridMaking(com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest)  Time elapsed: 0.083 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest.shouldMakeSampleUnavailableForGridMaking(SampleServiceTest.java:79)
+
+shouldLeaveSampleAvailableForGridMakingAsItWasBefore(com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest.shouldLeaveSampleAvailableForGridMakingAsItWasBefore(SampleServiceTest.java:125)
+
+shouldMakeSampleAvailableForGridMaking(com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest.shouldMakeSampleAvailableForGridMaking(SampleServiceTest.java:102)
+
+shouldThrowErrorWhenSampleIsNotAvailable(com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.gene.bioinfo.ms.gp2s.service.sample.SampleServiceTest.shouldThrowErrorWhenSampleIsNotAvailable(SampleServiceTest.java:63)
+

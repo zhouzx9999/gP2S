@@ -171,7 +171,7 @@ public class ProcessingSessionValidatorTest {
                 .softwareVersion("v1.0")
                 .build();
         MicroscopySession microscopySession = MicroscopySession.builder().build();
-        when(imageProcessingSoftwareRepository.findOne(1L)).thenReturn(ips);
+        when(imageProcessingSoftwareRepository.findById(1L).get()).thenReturn(ips);
         //when
         tested.validate(ProcessingSession.builder()
                 .label("processing session")

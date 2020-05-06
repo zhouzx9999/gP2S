@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.027 s <<< FAILURE! - in com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest
+shouldNotAllow0AsFinalConcentrationOfComponent(com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest)  Time elapsed: 0.016 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest.shouldNotAllow0AsFinalConcentrationOfComponent(SampleValidatorTest.java:99)
+
+shouldNotAllowEmptyFinalConcentrationOfComponent(com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest.shouldNotAllowEmptyFinalConcentrationOfComponent(SampleValidatorTest.java:87)
+
+shouldNotAllowNonExistingAliquot(com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest.shouldNotAllowNonExistingAliquot(SampleValidatorTest.java:140)
+
+shouldNotReturnAnyError(com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.sample.SampleValidatorTest.shouldNotReturnAnyError(SampleValidatorTest.java:148)
+

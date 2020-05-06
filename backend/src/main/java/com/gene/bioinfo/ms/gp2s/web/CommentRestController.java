@@ -120,8 +120,8 @@ public class CommentRestController extends AttachmentRestController {
         if (!this.userProvider.getSecurityEnabled()) {
             return;
         }
-        final Comment comment = this.commentService.getComment(id);
-        if (!this.userProvider.getCurrentAuditor().equalsIgnoreCase(comment.getCreatedBy())) {
+        final Comment comment = this.commentService.getComment(id).get();
+        if (!this.userProvider.getCurrentAuditor().get().equalsIgnoreCase(comment.getCreatedBy())) {
             throw new AccessDeniedException("Comment ownership violation");
         }
     }

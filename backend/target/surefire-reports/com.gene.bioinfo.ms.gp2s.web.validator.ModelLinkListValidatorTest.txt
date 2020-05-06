@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.052 s <<< FAILURE! - in com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest
+shouldNotAllowLinkModelToItself(com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest)  Time elapsed: 0.006 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest.shouldNotAllowLinkModelToItself(ModelLinkListValidatorTest.java:148)
+
+shouldNotAllowEmptyChildModel(com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest.shouldNotAllowEmptyChildModel(ModelLinkListValidatorTest.java:105)
+
+shouldNotAllowEmptyChildModelId(com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest.shouldNotAllowEmptyChildModelId(ModelLinkListValidatorTest.java:119)
+
+shouldAcceptModelLink(com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.gene.bioinfo.ms.gp2s.web.validator.ModelLinkListValidatorTest.shouldAcceptModelLink(ModelLinkListValidatorTest.java:195)
+

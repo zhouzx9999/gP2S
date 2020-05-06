@@ -96,7 +96,7 @@ public class MicroscopySessionService extends BaseProjectRestService<MicroscopyS
         }
 
         // Check if microscope exists.
-        Microscope microscope = microscopeId != null ? microscopeRepository.findOne(microscopeId)
+        Microscope microscope = microscopeId != null ? microscopeRepository.findById(microscopeId).get()
                 : microscopeRepository.findOneBySlug(microscopeSlugOrId);
         if (microscope == null) {
             throw new IllegalArgumentException("Microscope does not exist");
@@ -109,7 +109,7 @@ public class MicroscopySessionService extends BaseProjectRestService<MicroscopyS
     @Override
     public MicroscopySession createItem(@NonNull final MicroscopySession input,
                                         @NonNull final Long projectId) {
-        final Project project = projectRepository.findOne(projectId);
+        final Project project = projectRepository.findById(projectId).get();
         return commonCreateItem(project, input);
     }
 
@@ -142,7 +142,7 @@ public class MicroscopySessionService extends BaseProjectRestService<MicroscopyS
     @Transactional
     @NonNull
     public MicroscopySession updateItem(@NonNull final MicroscopySession input, @NonNull final Long projectId) {
-        return updateItem(input, projectRepository.findOne(projectId));
+        return updateItem(input, projectRepository.findById(projectId).get());
     }
 
     @Transactional

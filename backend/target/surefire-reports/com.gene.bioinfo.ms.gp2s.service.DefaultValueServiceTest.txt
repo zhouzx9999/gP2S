@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.gene.bioinfo.ms.gp2s.service.DefaultValueServiceTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.562 s <<< FAILURE! - in com.gene.bioinfo.ms.gp2s.service.DefaultValueServiceTest
+unnecessary Mockito stubbings(com.gene.bioinfo.ms.gp2s.service.DefaultValueServiceTest)  Time elapsed: 0.068 s  <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected in test class: DefaultValueServiceTest
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.gene.bioinfo.ms.gp2s.service.DefaultValueServiceTest.setup(DefaultValueServiceTest.java:64)
+  2. -> at com.gene.bioinfo.ms.gp2s.service.DefaultValueServiceTest.setup(DefaultValueServiceTest.java:65)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+

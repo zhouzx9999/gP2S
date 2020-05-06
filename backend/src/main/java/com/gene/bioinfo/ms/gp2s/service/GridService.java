@@ -80,7 +80,7 @@ public class GridService extends BaseProjectRestService<Grid> {
     @NonNull
     public Grid createItem(@NonNull final Grid input, @NonNull final Long projectId) {
         loadEntityDependency(input);
-        Project project = projectRepository.findOne(projectId);
+        Project project = projectRepository.findById(projectId).get();
         return commonCreateItem(project, input);
     }
 
@@ -112,7 +112,7 @@ public class GridService extends BaseProjectRestService<Grid> {
     @Transactional
     @NonNull
     public Grid updateItem(@NonNull final Grid input, @NonNull final Long projectId) {
-        return updateItem(input, projectRepository.findOne(projectId));
+        return updateItem(input, projectRepository.findById(projectId).get());
     }
 
     @Transactional
@@ -148,32 +148,32 @@ public class GridService extends BaseProjectRestService<Grid> {
     }
 
     protected void loadGridType(@NonNull final Grid input) {
-        input.setGridType(gridTypeRepository.findOne(input.getGridType().getId()));
+        input.setGridType(gridTypeRepository.findById(input.getGridType().getId()).get());
     }
 
     protected void loadSurfaceTreatmentProtocol(@NonNull final Grid input) {
-        input.setSurfaceTreatmentProtocol(surfaceTreatmentProtocolRepository.findOne(input.getSurfaceTreatmentProtocol().getId()));
+        input.setSurfaceTreatmentProtocol(surfaceTreatmentProtocolRepository.findById(input.getSurfaceTreatmentProtocol().getId()).get());
     }
 
     protected void loadVitrificationProtocol(@NonNull final Grid input) {
         if (input.getVitrificationProtocol() != null) {
-            input.setVitrificationProtocol(vitrificationProtocolRepository.findOne(input.getVitrificationProtocol().getId()));
+            input.setVitrificationProtocol(vitrificationProtocolRepository.findById(input.getVitrificationProtocol().getId()).get());
         }
     }
 
     protected void loadNegativeStainProtocol(@NonNull final Grid input) {
         if (input.getNegativeStainProtocol() != null) {
-            input.setNegativeStainProtocol(negativeStainProtocolRepository.findOne(input.getNegativeStainProtocol().getId()));
+            input.setNegativeStainProtocol(negativeStainProtocolRepository.findById(input.getNegativeStainProtocol().getId()).get());
         }
     }
 
     protected void loadSample(@NonNull final Grid input) {
-        input.setSample(sampleRepository.findOne(input.getSample().getId()));
+        input.setSample(sampleRepository.findById(input.getSample().getId()).get());
     }
 
     protected void loadCryoStorageDevice(@NonNull final Grid input) {
         if (input.getCryoStorageDevice() != null) {
-            input.setCryoStorageDevice(cryoStorageDeviceRepository.findOne(input.getCryoStorageDevice().getId()));
+            input.setCryoStorageDevice(cryoStorageDeviceRepository.findById(input.getCryoStorageDevice().getId()).get());
         }
     }
 

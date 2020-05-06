@@ -53,7 +53,7 @@ public class ProteinService extends BaseProjectRestService<Protein> {
 
     @Override
     public Collection<Project> getItemProjects(@NonNull final Long id) {
-        return Optional.ofNullable(this.repository.findOne(id)).map(Protein::getProjects)
+        return Optional.ofNullable(this.repository.findById(id).get()).map(Protein::getProjects)
                 .orElse(Collections.emptyList());
     }
 
@@ -65,11 +65,11 @@ public class ProteinService extends BaseProjectRestService<Protein> {
 
     @NonNull
     public Protein createItem(@NonNull final Protein input, @NonNull final Long projectId) {
-        if (!projectRepository.exists(projectId)) {
+        if (!projectRepository.existsById(projectId)) {
             throw new ResourceNotFoundException("Project with specified id doesn't exist: " + projectId);
         }
 
-        final Project project = projectRepository.findOne(projectId);
+        final Project project = projectRepository.findById(projectId).get();
         return commonCreateItem(input, project);
     }
 
@@ -90,7 +90,7 @@ public class ProteinService extends BaseProjectRestService<Protein> {
     }
 
     public Collection<Project> disconnectProject(@NonNull final Long proteinId, @NonNull final Long projectId) {
-        final Protein protein = Optional.ofNullable(repository.findOne(proteinId)).orElseThrow(() ->
+        final Protein protein = Optional.ofNullable(repository.findById(proteinId).get()).orElseThrow(() ->
                 new ResourceNotFoundException("Protein not found"));
 
         final Project project = protein.getProjects().stream().filter(p -> p.getId().equals(projectId)).findFirst()
@@ -104,9 +104,9 @@ public class ProteinService extends BaseProjectRestService<Protein> {
 
     public Collection<Project> connectProject(@NonNull final Long proteinId,
                                               @NonNull final Long projectId) {
-        final Protein protein = Optional.ofNullable(repository.findOne(proteinId)).orElseThrow
+        final Protein protein = Optional.ofNullable(repository.findById(proteinId).get()).orElseThrow
                 (ResourceNotFoundException::new);
-        final Project project = Optional.ofNullable(projectRepository.findOne(projectId)).orElseThrow
+        final Project project = Optional.ofNullable(projectRepository.findById(projectId).get()).orElseThrow
                 (ResourceNotFoundException::new);
         if (protein.getProjects().contains(project)) {
             throw new ValidationException("Association already exists");

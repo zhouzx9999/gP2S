@@ -26,6 +26,7 @@ import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,29 +77,28 @@ public class CommentService {
     }
 
     public void deleteComment(@NonNull final Long commentId) {
-        Optional.ofNullable(this.commentRepository.findOne(commentId))
+        Optional.ofNullable(this.commentRepository.findById(commentId).get())
                 .map(this::removeAttachmentsFromMongo)
                 .orElseThrow(() -> new ResourceNotFoundException("Comment not found for id: " + commentId));
 
-        this.commentRepository.delete(commentId);
+        this.commentRepository.deleteById(commentId);
     }
 
     @NonNull
     public Comment updateComment(@NonNull final Long id,
                                  @NonNull final String content,
                                  final Boolean forceSetModified) {
-        final Comment comment = Optional.ofNullable(this.commentRepository.findOne(id))
+        final Comment comment = Optional.ofNullable(this.commentRepository.findById(id).get())
                 .orElseThrow(() -> new ResourceNotFoundException("Comment not found for id: " + id));
         if (forceSetModified != null && forceSetModified) { // Attachments changes are not automatically reflected
-            comment.setModifiedDate(new java.util.Date());  // in modifiedDate so date change needs to be forced.
+            comment.setModifiedDate(new Date());  // in modifiedDate so date change needs to be forced.
         }
         comment.setContent(content);
         return this.commentRepository.save(comment);
     }
 
-    @NonNull
-    public Comment getComment(@NonNull final Long id) {
-        return Optional.ofNullable(this.commentRepository.findOne(id))
+    public Optional<Comment> getComment(@NonNull final Long id) {
+        return Optional.ofNullable(this.commentRepository.findById(id))
                 .orElseThrow(() -> new ResourceNotFoundException("Comment not found for id: " + id));
     }
 }

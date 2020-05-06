@@ -53,18 +53,18 @@ public class CommentAttachmentService extends AttachmentServiceOperations<Commen
 
     @Override
     public void deleteFile(Long id) {
-        final Attachment attachment = commentAttachmentRepository.findOne(id);
+        final Attachment attachment = commentAttachmentRepository.findById(id).orElse(CommentAttachment.builder().build());
 
         if (attachment == null || attachment.getMongoId() == null) {
             return;
         }
 
         deleteFile(attachment.getMongoId());
-        commentAttachmentRepository.delete(id);
+        commentAttachmentRepository.deleteById(id);
     }
 
     @Override
     public Comment findEntity(Long id) {
-        return commentRepository.findOne(id);
+        return commentRepository.findById(id).orElse(Comment.builder().build());
     }
 }

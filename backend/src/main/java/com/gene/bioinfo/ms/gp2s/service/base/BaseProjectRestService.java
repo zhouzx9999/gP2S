@@ -45,7 +45,7 @@ public abstract class BaseProjectRestService<T extends BaseSlugAndLabelEntity> e
 
     @NonNull
     protected Project getProjectById(@NonNull final Long id) {
-        return Optional.ofNullable(projectRepository.findOne(id))
+        return Optional.ofNullable(projectRepository.findById(id)).get()
                 .orElseThrow(() -> new ResourceNotFoundException("Project with specified id doesn't exist: " + id));
     }
 

@@ -68,11 +68,11 @@ public class GridValidatorTest {
                 .sample(Sample.builder().id(1L).build())
                 .surfaceTreatmentProtocol(SurfaceTreatmentProtocol.builder().id(1L).build());
 
-        when(gridTypeRepository.exists(anyLong())).thenReturn(true);
-        when(sampleRepository.exists(anyLong())).thenReturn(true);
-        when(surfaceTreatmentProtocolRepository.exists(anyLong())).thenReturn(true);
-        when(vitrificationProtocolRepository.exists(anyLong())).thenReturn(true);
-        when(negativeStainProtocolRepository.exists(anyLong())).thenReturn(true);
+        when(gridTypeRepository.existsById(anyLong())).thenReturn(true);
+        when(sampleRepository.existsById(anyLong())).thenReturn(true);
+        when(surfaceTreatmentProtocolRepository.existsById(anyLong())).thenReturn(true);
+        when(vitrificationProtocolRepository.existsById(anyLong())).thenReturn(true);
+        when(negativeStainProtocolRepository.existsById(anyLong())).thenReturn(true);
     }
 
     @Test
@@ -151,7 +151,7 @@ public class GridValidatorTest {
 
     @Test
     public void shouldProtocolTypeCryoFieldsBeRejectedWhenDeviceDoesntHaveThem() {
-        when(cryoStorageDeviceRepository.exists(anyLong())).thenReturn(true);
+        when(cryoStorageDeviceRepository.existsById(anyLong())).thenReturn(true);
         tested.validate(builder
                 .protocolType(Grid.ProtocolType.Cryo)
                 .vitrificationProtocol(VitrificationProtocol.builder().id(1L).build())
@@ -172,7 +172,7 @@ public class GridValidatorTest {
 
     @Test
     public void shouldProtocolTypeCryoRejectStainFields() {
-        when(cryoStorageDeviceRepository.exists(anyLong())).thenReturn(true);
+        when(cryoStorageDeviceRepository.existsById(anyLong())).thenReturn(true);
         tested.validate(builder
                 .protocolType(Grid.ProtocolType.Cryo)
                 .vitrificationProtocol(VitrificationProtocol.builder().id(1L).build())
@@ -209,7 +209,7 @@ public class GridValidatorTest {
                         .hasBoxes(false)
                         .build())
                 .build(), errors);
-        verify(cryoStorageDeviceRepository, times(1)).exists(2L);
+        verify(cryoStorageDeviceRepository, times(1)).existsById(2L);
     }
 
     @Test

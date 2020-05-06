@@ -41,7 +41,7 @@ public class MapLinkService {
     }
 
     public List<MapLink> getMapLinks(@NonNull final Long mapId) {
-        if (!this.mapRepository.exists(mapId)) {
+        if (!this.mapRepository.existsById(mapId)) {
             throw new ResourceNotFoundException("Map with given id doesn't exist: " + mapId);
         }
 
@@ -49,15 +49,15 @@ public class MapLinkService {
     }
 
     public void deleteMapLink(@NonNull final Long mapLinkId) {
-        Optional.ofNullable(this.mapLinkRepository.findOne(mapLinkId))
+        Optional.ofNullable(this.mapLinkRepository.findById(mapLinkId))
                 .orElseThrow(() -> new ResourceNotFoundException("MapLink not found for id: " + mapLinkId));
-        this.mapLinkRepository.delete(mapLinkId);
+        this.mapLinkRepository.deleteById(mapLinkId);
     }
 
     public MapLink createMapLink(@NonNull final MapLink input) {
         final MapLink link = MapLink.builder()
-                .parentMap(this.mapRepository.findOne(input.getParentMap().getId()))
-                .childMap(this.mapRepository.findOne(input.getChildMap().getId()))
+                .parentMap(this.mapRepository.findById(input.getParentMap().getId()).get())
+                .childMap(this.mapRepository.findById(input.getChildMap().getId()).get())
                 .comment(input.getComment())
                 .relationshipType(input.getRelationshipType())
                 .build();

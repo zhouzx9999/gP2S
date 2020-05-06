@@ -15,7 +15,6 @@
  */
 
 package com.gene.bioinfo.ms.gp2s.exception;
-
 import com.gene.bioinfo.ms.gp2s.exception.responses.BaseErrorResponse;
 import com.gene.bioinfo.ms.gp2s.exception.responses.ValidationError;
 import com.netflix.config.validation.ValidationException;
